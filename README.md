@@ -1,4 +1,4 @@
-# 🎥 Tailscale CCTV Integration Pattern
+# 🎥 Tailscale CCTV Integration
 > Secure, zero-config mesh networking for multi-site CCTV integration using Tailscale + Socat relay.
 
 [![Pattern](https://img.shields.io/badge/Pattern-Mesh%20VPN%20Integration-blue)]()
