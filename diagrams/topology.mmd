@@ -1,0 +1,29 @@
+
+---
+
+## 🗂️ `diagrams/topology.mmd`
+
+```mermaid
+flowchart LR
+    subgraph SiteA["📍 Site A (Source)"]
+        CCTV["📹 CCTV (RTSP)"] --> LTE["📡 LTE Router"]
+        LTE --> GL["🔌 GL.iNet GL-MT300N-V2"]
+        GL -->|Socat Relay| TS_A["🔐 Tailscale Client"]
+    end
+
+    subgraph Mesh["🌐 Tailscale Encrypted Mesh"]
+        TS_A <-->|WireGuard| TS_B
+    end
+
+    subgraph SiteB["📍 Site B (Receiver)"]
+        TS_B["🔐 Tailscale Client"] -->|Socat Relay| UB["🖥️ Ubuntu Server"]
+        UB --> FR["🎬 Frigate/Shinobi VNVR"]
+        UB --> NVR["📼 XMEye NVR (Local RTSP)"]
+    end
+
+    style CCTV fill:#1e3a5f,stroke:#00d4ff,color:#fff
+    style GL fill:#1e3a8a,stroke:#3b82f6,color:#fff
+    style TS_A fill:#064e3b,stroke:#10b981,color:#fff
+    style TS_B fill:#064e3b,stroke:#10b981,color:#fff
+    style UB fill:#14532d,stroke:#22c55e,color:#fff
+    style NVR fill:#451a03,stroke:#f59e0b,color:#fff
